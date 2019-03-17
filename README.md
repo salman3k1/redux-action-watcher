@@ -1,6 +1,6 @@
 # Redux Action Watcher
 
-Redux action watcher is a set of a redux middleware and a helper method that lets you watch for redux actions within your react components and bind callback functions to them when the component is updated/re-rendered due to a state change caused by that specific action. It is especially useful where the action creators invoked are async in nature and when you can't reliably tell which action caused the update; since there can be state changes due to other actions in-between. 
+[Redux action watcher](https://github.com/salman3k1/redux-action-watcher) is a set of a redux middleware and a helper method that lets you watch for redux actions within your react components and bind callback functions to them when the component is updated/re-rendered due to a state change caused by that specific action. It is especially useful where the action creators invoked are async in nature and when you can't reliably tell which action caused the update; since there can be state changes due to other actions in-between. 
 
 ## Getting Started
 
