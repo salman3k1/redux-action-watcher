@@ -1,0 +1,30 @@
+{
+  "name": "redux-action-watcher",
+  "version": "1.0.0",
+  "description": "A redux action watcher which can be used inside react components to subscribe to an action and define a callback function for it to execute when the component is updated/re-rendered because of the specified action",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/babel index.js --presets babel-preset-es2015 --out-file lib/index.js"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "actions",
+    "state",
+    "watcher",
+    "middleware",
+    "redux-middleware",
+    "flux"
+  ],
+  "author": "Muhammad Salman Abid",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+  }
+}
