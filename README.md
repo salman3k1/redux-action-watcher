@@ -72,5 +72,5 @@ The first argument is the component context i-e 'this'. Second Argument is an ar
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/salman3k1/redux-action-watcher/blob/master/LICENSE.md) file for details
 
