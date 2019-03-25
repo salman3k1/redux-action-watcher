@@ -1,6 +1,6 @@
 {
   "name": "redux-action-watcher",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A redux action watcher which can be used inside react components to subscribe to an action and define a callback function for it to execute.",
   "main": "lib/index.js",
   "scripts": {

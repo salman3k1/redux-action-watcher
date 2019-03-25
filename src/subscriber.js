@@ -77,7 +77,7 @@ const subscribeToWatcher = (component, actionsAndCallbacksArray) => {
             if (component.originalComponentWillUnmount) {
                 component.originalComponentWillUnmount();
             }
-            unsubscribeFromWatcher(component);
+            unsubscribeComponentFromWatcher(component);
         }
 
     } catch (e) {
@@ -89,20 +89,19 @@ const subscribeToWatcher = (component, actionsAndCallbacksArray) => {
  * @param {object} component - A React stateful/class-based component
  *
  */
-function unsubscribeFromWatcher(component) {
+const unsubscribeComponentFromWatcher = (component) => {
     try {
-
-        if (component instanceof ReactComponent && component.reduxActionWatcherSubscriptions !== undefined && typeof component.reduxActionWatcherSubscriptions === "object") {
-            for (let actionKey in component.reduxActionWatcherSubscriptions) {
-                if (__reduxActionWatcherInternalState.actionSubscriptions[actionKey] !== undefined) {
+        
+        if(typeof component === "object" && component.reduxActionWatcherSubscriptions !== undefined && typeof component.reduxActionWatcherSubscriptions === "object"){
+            for(let actionKey in component.reduxActionWatcherSubscriptions){
+                if(__reduxActionWatcherInternalState.actionSubscriptions[actionKey] !== undefined){
                     const indexOfComponent = __reduxActionWatcherInternalState.actionSubscriptions[actionKey].indexOf(component);
-                    if (indexOfComponent > -1) {
-                        __reduxActionWatcherInternalState.actionSubscriptions[actionKey].splice(indexOfComponent, 1);
+                    if(indexOfComponent > -1){
+                        __reduxActionWatcherInternalState.actionSubscriptions[actionKey].splice(indexOfComponent,1);
                     }
                 }
             }
         }
-
     } catch (e) {
         console.log(e);
     }
