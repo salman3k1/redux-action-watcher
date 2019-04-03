@@ -92,7 +92,11 @@ The first argument is the component context i-e 'this'. Second Argument is an ar
 
 ## Unsubscribing
 
-Unsubscribing is not required for now  as it will be automatically done for you when your component is unmounted. Manually unsubscribing from certain actions is a work in progress and this feature will be available soon.
+To prevent memory leaks it is necessary to unsubscribe from watcher in the componentWillUnmount lifecycle method. This will revoke all subscriptions on the component. Manually unsubscribing from certain actions is a work in progress and this feature will be available soon. 
+
+```javascript
+this.unsubscribeFromWatcher();
+```
 
 
 ## Authors

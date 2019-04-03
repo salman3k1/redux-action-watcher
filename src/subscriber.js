@@ -69,15 +69,19 @@ const subscribeToWatcher = (component, actionsAndCallbacksArray) => {
             }
         }
 
+        // Commented for now as extending the original method was causing conflicts with other packages such as react-hot-loader as reported by the community
         // Auto unsubscribe on componentWillUnmount()
 
-        component.originalComponentWillUnmount = component.componentWillUnmount;
-        component.componentWillUnmount = () => {
+        // component.originalComponentWillUnmount = component.componentWillUnmount;
+        // component.componentWillUnmount = () => {
 
-            if (component.originalComponentWillUnmount) {
-                component.originalComponentWillUnmount();
-            }
-            unsubscribeComponentFromWatcher(component);
+        //     if (component.originalComponentWillUnmount) {
+        //         component.originalComponentWillUnmount();
+        //     }
+        //     unsubscribeFromWatcher(component);
+        // }
+        component.unsubscribeFromWatcher = () => {
+            unsubscribeFromWatcher(component);
         }
 
     } catch (e) {
@@ -89,15 +93,14 @@ const subscribeToWatcher = (component, actionsAndCallbacksArray) => {
  * @param {object} component - A React stateful/class-based component
  *
  */
-const unsubscribeComponentFromWatcher = (component) => {
+const unsubscribeFromWatcher = (component) => {
     try {
-        
-        if(typeof component === "object" && component.reduxActionWatcherSubscriptions !== undefined && typeof component.reduxActionWatcherSubscriptions === "object"){
-            for(let actionKey in component.reduxActionWatcherSubscriptions){
-                if(__reduxActionWatcherInternalState.actionSubscriptions[actionKey] !== undefined){
+        if (typeof component === "object" && component.reduxActionWatcherSubscriptions !== undefined && typeof component.reduxActionWatcherSubscriptions === "object") {
+            for (let actionKey in component.reduxActionWatcherSubscriptions) {
+                if (__reduxActionWatcherInternalState.actionSubscriptions[actionKey] !== undefined) {
                     const indexOfComponent = __reduxActionWatcherInternalState.actionSubscriptions[actionKey].indexOf(component);
-                    if(indexOfComponent > -1){
-                        __reduxActionWatcherInternalState.actionSubscriptions[actionKey].splice(indexOfComponent,1);
+                    if (indexOfComponent > -1) {
+                        __reduxActionWatcherInternalState.actionSubscriptions[actionKey].splice(indexOfComponent, 1);
                     }
                 }
             }
