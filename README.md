@@ -95,7 +95,9 @@ The first argument is the component context i-e 'this'. Second Argument is an ar
 To prevent memory leaks it is necessary to unsubscribe from watcher in the componentWillUnmount lifecycle method. This will revoke all subscriptions on the component. Manually unsubscribing from certain actions is a work in progress and this feature will be available soon. 
 
 ```javascript
-this.unsubscribeFromWatcher();
+componentWillUnmount(){
+    this.unsubscribeFromWatcher();
+}
 ```
 
 
